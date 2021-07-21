@@ -1,5 +1,5 @@
 _build/
-node_modules/
+assets/node_modules/
 deps/
 doc/
 priv/static/
