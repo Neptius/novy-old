@@ -116,7 +116,8 @@ defmodule NovyData.AuthService do
          {:ok, user_data} <- format_user_data(user_raw_data, auth_provider),
          exist_auth_user <-
            AuthUser.get_exist_auth_user(auth_provider.label, user_data["auth_provider_user_id"]),
-         {:ok, user_id, auth_user_id} <- create_or_update_auth_user(exist_auth_user, user_data, auth_provider) do
+         {:ok, user_id, auth_user_id} <-
+           create_or_update_auth_user(exist_auth_user, user_data, auth_provider) do
       {:ok, user_id, auth_user_id}
     else
       {:error, error} ->
