@@ -5,7 +5,7 @@ defmodule NovyAdmin.AuthController do
 
   def callback(conn, params) do
     case AuthService.start_auth(params, NovyAdmin.Endpoint.url()) do
-      {:ok, user_id, auth_user_id} ->
+      {:ok, user_id, _auth_user_id} ->
         conn
         |> UserAuth.log_in_user(user_id)
 

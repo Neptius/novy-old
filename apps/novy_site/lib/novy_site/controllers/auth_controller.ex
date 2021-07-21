@@ -5,7 +5,7 @@ defmodule NovySite.AuthController do
 
   def login_callback(conn, params) do
     case AuthService.start_auth(params, NovySite.Endpoint.url()) do
-      {:ok, user_id, auth_user_id} ->
+      {:ok, user_id, _auth_user_id} ->
         conn
         |> UserAuth.log_in_user(user_id)
 
@@ -19,7 +19,7 @@ defmodule NovySite.AuthController do
     current_user = conn.assigns[:current_user]
 
     case AuthService.start_link(params, NovySite.Endpoint.url(), current_user.id) do
-      {:ok, user_id, auth_user_id} ->
+      {:ok, user_id, _auth_user_id} ->
         conn
         |> UserAuth.log_in_user(user_id)
 
