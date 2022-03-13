@@ -25,7 +25,7 @@ config :novy_web, NovyWeb.Endpoint,
   secret_key_base: "47CgqqnCUP3aFBNRLasQ46+URvCK2WWxnpug9d/D/wtzIuartIgqNjApnZc8rdIO",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:novy_web, ~w(--sourcemap=inline --watch)]}
   ]
 
 # ## SSL Support
@@ -79,7 +79,7 @@ config :novy_admin, NovyAdmin.Endpoint,
   secret_key_base: "oVvQ/t9Rhz0Kx+d56bKIxEDVc5AjjPqxueSLu5ns/BdRZLo6FUSs1WLYBjw/Q81U",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:novy_admin, ~w(--sourcemap=inline --watch)]}
   ]
 
 # ## SSL Support
