@@ -3,8 +3,8 @@
 module.exports = {
     content: [
         './ts/**/*.ts',
-        '../lib/*_web.ex',
-        '../lib/*_web/**/*.*ex'
+        '../lib/*_admin.ex',
+        '../lib/*_admin/**/*.*ex'
     ],
     theme: {
         extend: {},

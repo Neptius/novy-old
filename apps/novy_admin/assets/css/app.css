@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+body {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+.wrapper {
+  grid-template-columns: 1fr;
+  grid-template-rows: 64px 1fr;
+  grid-template-areas: "header" "main";
+}
+
+.header {
+  grid-area: header;
+}
+
+.aside {
+  grid-area: aside;
+  transform: translateX(-256px);
+  @apply transition duration-500 ease-in-out;
+}
+
+.aside-backdrop.nav-open {
+  display: block;
+}
+
+.aside.nav-open {
+  transform: translateX(0);
+}
+
+.main {
+  grid-area: main;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+@media (min-width: 1024px) {
+  /* Show the aside */
+  .wrapper {
+    grid-template-columns: 256px 1fr;
+    grid-template-areas: "aside header" "aside main" "aside footer";
+  }
+  .aside {
+    position: relative;
+    transform: translateX(0);
+    transition: none !important;
+  }
+  .aside-backdrop.nav-open {
+    display: none !important;
+  }
+}
+
+.nv-badge {
+  @apply p-2 tracking-widest
+}
+
+.nv-nav ul li a {
+  @apply text-white w-64 py-3 pl-6 flex
+}
+.nv-nav ul li a:hover {
+  @apply bg-slate-600 border-l-8 border-teal-500
+}
+.nv-nav ul li a:active {
+  @apply bg-slate-700 border-l-8 border-teal-500
+}
