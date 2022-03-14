@@ -14,10 +14,12 @@ defmodule NovyAdmin.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", NovyAdmin do
-    pipe_through :browser
+  live_session :default do
+    scope "/", NovyAdmin do
+      pipe_through :browser
 
-    get "/", PageController, :index
+      live "/", HomeLive.Index, :index
+    end
   end
 
   # Other scopes may use custom stacks.
