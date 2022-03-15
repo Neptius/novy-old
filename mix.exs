@@ -11,10 +11,11 @@ defmodule Novy.Umbrella.MixProject do
       releases: [
         novy_umbrella: [
           applications: [
-            # novy: :permanent,
+            novy: :permanent,
             novy_web: :permanent,
             novy_admin: :permanent,
-            novy_api: :permanent
+            novy_api: :permanent,
+            novy_proxy: :permanent
           ]
         ]
       ]

@@ -7,8 +7,6 @@ import Config
 # any compile-time configuration in here, as it won't be applied.
 # The block below contains prod specific runtime configuration.
 if config_env() == :prod do
-  host = System.get_env("PHX_HOST") || "example.com"
-
   database_url =
     System.get_env("DATABASE_URL") ||
       raise """
@@ -37,7 +35,7 @@ if config_env() == :prod do
       """
 
   config :novy_web, NovyWeb.Endpoint,
-    url: [host: host, port: 80],
+    url: [host: System.get_env("WEB_HOST") || "example.com", port: 80],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -76,7 +74,7 @@ if config_env() == :prod do
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 
   config :novy_admin, NovyAdmin.Endpoint,
-    url: [host: host, port: 80],
+    url: [host: System.get_env("ADMIN_HOST") || "example.com", port: 80],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -115,7 +113,7 @@ if config_env() == :prod do
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 
   config :novy_api, NovyApi.Endpoint,
-    url: [host: host, port: 80],
+    url: [host: System.get_env("API_HOST") || "example.com", port: 80],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
