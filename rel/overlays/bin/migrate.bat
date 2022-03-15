@@ -1,0 +1,1 @@
+call "%~dp0\novy_umbrella" eval NovyAdmin.Release.migrate
