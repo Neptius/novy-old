@@ -83,8 +83,6 @@ RUN mix compile
 # Changes to config/runtime.exs don't require recompiling the code
 COPY config/runtime.exs config/
 
-COPY ./entrypoint.sh ./entrypoint.sh
-
 COPY rel rel
 RUN mix release
 
@@ -112,3 +110,7 @@ COPY --from=builder --chown=nobody:root /app/_build/prod/rel/novy_umbrella ./
 USER nobody
 
 CMD ["/app/bin/server"]
+
+# Appended by flyctl
+ENV ECTO_IPV6 true
+ENV ERL_AFLAGS "-proto_dist inet6_tcp"

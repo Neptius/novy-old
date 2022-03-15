@@ -1,1 +1,1 @@
-call "%~dp0\novy_umbrella" eval NovyAdmin.Release.migrate
+call "%~dp0\novy_umbrella" eval Novy.Release.migrate

@@ -43,14 +43,14 @@ if config_env() == :prod do
       port: String.to_integer(System.get_env("PORT") || "4000")
     ],
     secret_key_base: secret_key_base,
-    check_origin: ["//localhost:4000"]
+    check_origin: ["//localhost:4000", "//novy.dev"]
 
   # ## Using releases
   #
   # If you are doing OTP releases, you need to instruct Phoenix
   # to start each relevant endpoint:
   #
-  config :novy_web, NovyWeb.Endpoint, server: true
+  # config :novy_web, NovyWeb.Endpoint, server: true
   #
   # Then you can assemble a release by calling `mix release`.
   # See `mix help release` for more information.
@@ -82,14 +82,14 @@ if config_env() == :prod do
       port: String.to_integer(System.get_env("PORT") || "4001")
     ],
     secret_key_base: secret_key_base,
-    check_origin: ["//localhost:4001"]
+    check_origin: ["//localhost:4001", "//admin.novy.dev"]
 
   # ## Using releases
   #
   # If you are doing OTP releases, you need to instruct Phoenix
   # to start each relevant endpoint:
   #
-  config :novy_admin, NovyAdmin.Endpoint, server: true
+  # config :novy_admin, NovyAdmin.Endpoint, server: true
   #
   # Then you can assemble a release by calling `mix release`.
   # See `mix help release` for more information.
@@ -121,15 +121,32 @@ if config_env() == :prod do
       port: String.to_integer(System.get_env("PORT") || "4002")
     ],
     secret_key_base: secret_key_base,
-    check_origin: ["//localhost:4002"]
+    check_origin: ["//localhost:4002", "//api.novy.dev"]
 
   # ## Using releases
   #
   # If you are doing OTP releases, you need to instruct Phoenix
   # to start each relevant endpoint:
   #
-  config :novy_api, NovyApi.Endpoint, server: true
+  # config :novy_api, NovyApi.Endpoint, server: true
   #
   # Then you can assemble a release by calling `mix release`.
   # See `mix help release` for more information.
+
+  config :master_proxy,
+    http: [port: 4000],
+    backends: [
+      %{
+        domain: "novy.dev",
+        phoenix_endpoint: NovyWeb.Endpoint
+      },
+      %{
+        domain: "admin.novy.dev",
+        phoenix_endpoint: NovyAdmin.Endpoint
+      },
+      %{
+        domain: "api.novy.dev",
+        phoenix_endpoint: NovyApi.Endpoint
+      }
+    ]
 end

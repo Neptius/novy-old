@@ -15,7 +15,6 @@ defmodule Novy.Umbrella.MixProject do
             novy_web: :permanent,
             novy_admin: :permanent,
             novy_api: :permanent,
-            novy_proxy: :permanent
           ]
         ]
       ]
