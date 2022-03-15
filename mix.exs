@@ -7,7 +7,17 @@ defmodule Novy.Umbrella.MixProject do
       version: "0.1.0",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      aliases: aliases()
+      aliases: aliases(),
+      releases: [
+        novy_umbrella: [
+          applications: [
+            # novy: :permanent,
+            novy_web: :permanent,
+            novy_admin: :permanent,
+            novy_api: :permanent
+          ]
+        ]
+      ]
     ]
   end
 

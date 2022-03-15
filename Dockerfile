@@ -47,6 +47,11 @@ RUN mkdir config
 COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
+COPY apps/novy/lib /app/apps/novy/lib/
+COPY apps/novy_web/lib /app/apps/novy_web/lib/
+COPY apps/novy_admin/lib /app/apps/novy_admin/lib/
+COPY apps/novy_api/lib /app/apps/novy_api/lib/
+
 COPY apps/novy/priv /app/apps/novy/priv
 COPY apps/novy_web/priv /app/apps/novy_web/priv
 COPY apps/novy_admin/priv /app/apps/novy_admin/priv
@@ -61,24 +66,18 @@ COPY apps/novy_admin/assets /app/apps/novy_admin/assets
 
 # compile assets
 WORKDIR /app/apps/novy_web
-RUN npm --prefix ./assets install --frozen-lockfile
+RUN npm --prefix ./assets ci --frozen-lockfile
 RUN npm run --prefix ./assets deploy
 RUN mix assets.deploy
 
 WORKDIR /app/apps/novy_admin
-RUN npm --prefix ./assets install --frozen-lockfile
+RUN npm --prefix ./assets ci --frozen-lockfile
 RUN npm run --prefix ./assets deploy
 RUN mix assets.deploy
 
 WORKDIR /app
 
-
 # Compile the release
-COPY apps/novy/lib /app/apps/novy/lib/
-COPY apps/novy_web/lib /app/apps/novy_web/lib/
-COPY apps/novy_admin/lib /app/apps/novy_admin/lib/
-COPY apps/novy_api/lib /app/apps/novy_api/lib/
-
 RUN mix compile
 
 # Changes to config/runtime.exs don't require recompiling the code
