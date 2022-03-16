@@ -43,7 +43,7 @@ if config_env() == :prod do
       port: String.to_integer(System.get_env("PORT") || "4000")
     ],
     secret_key_base: secret_key_base,
-    check_origin: ["//localhost:4000", "//novy.dev"]
+    check_origin: ["//localhost:4000", "//novy.dev", "//wWw.novy.dev"]
 
   # ## Using releases
   #
@@ -138,6 +138,10 @@ if config_env() == :prod do
     backends: [
       %{
         domain: "novy.dev",
+        phoenix_endpoint: NovyWeb.Endpoint
+      },
+      %{
+        domain: "www.novy.dev",
         phoenix_endpoint: NovyWeb.Endpoint
       },
       %{
