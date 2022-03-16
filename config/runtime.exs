@@ -35,7 +35,7 @@ if config_env() == :prod do
       """
 
   config :novy_web, NovyWeb.Endpoint,
-    url: [host: System.get_env("WEB_HOST") || "example.com", port: 80],
+    url: [host: "novy.dev", port: 80],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -74,7 +74,7 @@ if config_env() == :prod do
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 
   config :novy_admin, NovyAdmin.Endpoint,
-    url: [host: System.get_env("ADMIN_HOST") || "example.com", port: 80],
+    url: [host: "admin.novy.dev", port: 80],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -113,7 +113,7 @@ if config_env() == :prod do
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
 
   config :novy_api, NovyApi.Endpoint,
-    url: [host: System.get_env("API_HOST") || "example.com", port: 80],
+    url: [host: "api.novy.dev", port: 80],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -138,6 +138,10 @@ if config_env() == :prod do
     backends: [
       %{
         domain: "novy.dev",
+        phoenix_endpoint: NovyWeb.Endpoint
+      },
+      %{
+        domain: "novy.fly.dev",
         phoenix_endpoint: NovyWeb.Endpoint
       },
       %{
