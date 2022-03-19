@@ -19,6 +19,11 @@ defmodule NovyAdmin.Router do
       pipe_through :browser
 
       live "/", HomeLive.Index, :index
+      live "/page-1", Page1Live.Index, :index
+      live "/page-2", Page2Live.Index, :index
+      live "/page-3", Page3Live.Index, :index
+      live "/page-4", Page4Live.Index, :index
+      live "/page-5", Page5Live.Index, :index
     end
   end
 

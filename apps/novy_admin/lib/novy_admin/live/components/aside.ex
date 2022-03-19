@@ -16,6 +16,8 @@ defmodule NovyAdmin.ComponentLive.Aside do
       <nav class="nv-nav mt-2">
         <ul>
           <li>
+          <%= live_patch "home", to: Routes.page_path(@socket, :index) %>
+
             <a class="flex items-center" href="javascript:;">
               <div class="ml-3">
                 Dashboard
