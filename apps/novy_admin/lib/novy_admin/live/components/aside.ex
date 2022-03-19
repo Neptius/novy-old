@@ -1,5 +1,7 @@
 defmodule NovyAdmin.ComponentLive.Aside do
-  use Phoenix.LiveComponent
+  @moduledoc false
+
+  use NovyAdmin, :live_component
 
   def render(assigns) do
     ~H"""
@@ -16,48 +18,42 @@ defmodule NovyAdmin.ComponentLive.Aside do
       <nav class="nv-nav mt-2">
         <ul>
           <li>
-          <%= live_patch "home", to: Routes.page_path(@socket, :index) %>
-
-            <a class="flex items-center" href="javascript:;">
-              <div class="ml-3">
-                Dashboard
-              </div>
-            </a>
+          <%= live_patch to: Routes.home_index_path(@socket, :index) do %>
+            Home
+          <% end %>
           </li>
           <li>
-            <a class="flex items-center" href="javascript:;">
-              <div class="ml-3">
-                Utilisateurs
-              </div>
-            </a>
+          <%= live_patch to: Routes.page1_index_path(@socket, :index) do %>
+            Page 1
+          <% end %>
           </li>
           <li>
-            <a class="flex items-center" href="javascript:;">
-              <div class="ml-3">
-                Paramètrage
-              </div>
-            </a>
-            <ul>
-              <li>
-                <a href="javascript:;">
-                  Dashboard
-                </a>
-              </li>
-              <li>
-                <a href="javascript:;">
-                  Utilisateurs
-                </a>
-              </li>
-              <li>
-                <a href="javascript:;">
-                  Paramètrage
-                </a>
-              </li>
-            </ul>
+          <%= live_patch to: Routes.page2_index_path(@socket, :index) do %>
+            Page 2
+          <% end %>
+          </li>
+          <li>
+          <%= live_patch to: Routes.page3_index_path(@socket, :index) do %>
+            Page 3
+          <% end %>
+          </li>
+          <li>
+          <%= live_patch to: Routes.page4_index_path(@socket, :index) do %>
+            Page 4
+          <% end %>
+          </li>
+          <li>
+          <%= live_patch to: Routes.page5_index_path(@socket, :index) do %>
+            Page 5
+          <% end %>
           </li>
         </ul>
       </nav>
     </aside>
     """
+  end
+
+  def mount(socket) do
+    {:ok, socket}
   end
 end
