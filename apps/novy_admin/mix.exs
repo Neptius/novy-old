@@ -50,7 +50,8 @@ defmodule NovyAdmin.MixProject do
       {:gettext, "~> 0.18"},
       {:novy, in_umbrella: true},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:ex_fontawesome, "~> 0.7.1"}
     ]
   end
 

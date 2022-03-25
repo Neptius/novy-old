@@ -134,7 +134,7 @@ if config_env() == :prod do
   # See `mix help release` for more information.
 
   config :master_proxy,
-    http: [port: 4000],
+    http: [:inet6, port: 4000],
     backends: [
       %{
         domain: "novy.dev",
