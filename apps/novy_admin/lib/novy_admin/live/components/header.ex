@@ -11,7 +11,7 @@ defmodule NovyAdmin.ComponentLive.Header do
       <div class="flex justify-between mx-5">
         <div class="nv-header-left">
 
-          <button phx-click={toggle_menu()}>
+          <button>
             <FontAwesome.LiveView.icon name="bars" type="solid" class="h-6 w-6 text-white fill-current" />
           </button>
 
@@ -23,19 +23,7 @@ defmodule NovyAdmin.ComponentLive.Header do
     """
   end
 
-  def toggle_menu(js \\ %JS{}) do
-    case collapse do
-      true ->
-        js
-        |> JS.add_class("is-collapsed", to: "#wrapper")
-
-      _ ->
-        js
-        |> JS.remove_class("is-collapsed", to: "#wrapper")
-    end
-  end
-
-  def mount(_params, _session, socket) do
+  def mount(socket) do
     {:ok, socket}
   end
 end
