@@ -41,7 +41,7 @@ defmodule Novy.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:jason, "~> 1.2"},
       {:swoosh, "~> 1.3"},
-      {:master_proxy, "~> 0.1"},
+      {:master_proxy, "~> 0.1"}
     ]
   end
 
