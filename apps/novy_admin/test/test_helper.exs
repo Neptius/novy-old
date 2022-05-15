@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(NovyAdmin.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(Novy.Repo, :manual)

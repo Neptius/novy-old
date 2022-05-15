@@ -1,8 +1,5 @@
 defmodule NovyAdmin.PageControllerTest do
-  use NovyAdmin.ConnCase
+  @moduledoc false
 
-  test "GET /", %{conn: conn} do
-    conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "Welcome to Phoenix!"
-  end
+  use NovyAdmin.ConnCase
 end

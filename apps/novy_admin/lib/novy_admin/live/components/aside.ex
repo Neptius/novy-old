@@ -5,7 +5,10 @@ defmodule NovyAdmin.ComponentLive.Aside do
 
   def render(assigns) do
     ~H"""
-    <aside id="aside" class="aside fixed z-40 h-full bg-slate-800 flex flex-col">
+    <aside id="aside" class="aside sticky z-40 h-screen top-0 bg-slate-800 flex flex-col">
+
+      <.live_component module={NovyAdmin.ComponentLive.Backdrop} id="backdrop" />
+
       <div class="h-16 flex items-center justify-between bg-teal-500 text-white px-5">
         <h1 class="chakra-petch text-2xl font-medium tracking-widest uppercase">
           Novy

@@ -24,7 +24,7 @@ body {
   @apply transition duration-500 ease-in-out;
 }
 
-.aside-backdrop.nav-open {
+.aside.nav-open .backdrop{
   display: block;
 }
 
@@ -47,7 +47,6 @@ body {
     grid-template-areas: "aside header" "aside main" "aside footer";
   }
   .aside {
-    position: relative;
     transform: translateX(0);
     transition: none !important;
   }

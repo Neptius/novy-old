@@ -10,7 +10,8 @@ defmodule NovyAdmin.ComponentLive.Header do
     <header id="header" class="header bg-slate-600 flex items-center">
       <div class="flex justify-between mx-7">
         <div class="nv-header-left">
-          <button phx-click={toogle_aside()}>
+
+          <button phx-click={toggle_expanded()}>
             <FontAwesome.LiveView.icon name="bars" type="solid" class="h-6 w-6 text-white fill-current" />
           </button>
         </div>
@@ -25,8 +26,15 @@ defmodule NovyAdmin.ComponentLive.Header do
     {:ok, socket}
   end
 
-  defp toogle_aside(js \\ %JS{}) do
+  def toggle_expanded(js \\ %JS{}) do
     js
-    |> JS.toggle(to: "#aside", in: "fade-in-scale", out: "fade-out-scale")
+    |> JS.remove_class(
+      "nav-open",
+      to: ".aside.nav-open"
+    )
+    |> JS.add_class(
+      "nav-open",
+      to: ".aside:not(.nav-open)"
+    )
   end
 end
