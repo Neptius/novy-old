@@ -35,7 +35,8 @@ defmodule Novy.Umbrella.MixProject do
   # and cannot be accessed from applications inside the apps/ folder.
   defp deps do
     [
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:phoenix_live_view, "~> 0.17.9"}
     ]
   end
 

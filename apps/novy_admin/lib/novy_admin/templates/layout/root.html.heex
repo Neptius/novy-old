@@ -10,6 +10,11 @@
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
   <body>
+  <%= if Pow.Plug.current_user(@conn) do %>
+  <span><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></span>
+<% else %>
+  <span><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></span>
+<% end %>
     <%= @inner_content %>
   </body>
 </html>

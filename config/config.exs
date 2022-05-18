@@ -13,6 +13,16 @@ import Config
 config :novy,
   ecto_repos: [Novy.Repo]
 
+config :novy_web, :pow,
+  user: Novy.Users.User,
+  repo: Novy.Repo,
+  web_module: NovyWeb
+
+config :novy_admin, :pow,
+  user: Novy.Users.User,
+  repo: Novy.Repo,
+  web_module: NovyAdmin
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

@@ -1,5 +1,7 @@
 defmodule NovyAdmin.Router do
   use NovyAdmin, :router
+  use Pow.Phoenix.Router
+  use PowAssent.Phoenix.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -12,6 +14,52 @@ defmodule NovyAdmin.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  pipeline :skip_csrf_protection do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :put_secure_browser_headers
+  end
+
+  pipeline :protected do
+    plug Pow.Plug.RequireAuthenticated,
+      error_handler: Pow.Phoenix.PlugErrorHandler
+  end
+
+  scope "/" do
+    pipe_through [:browser]
+
+    #* ACTIVE L'INSCRIPTION
+    # pow_routes()
+    #* OR
+    #! DESACTIVE L'INSCRIPTION
+    pow_session_routes()
+
+    #* ACTIVE L'INSCRIPTION
+    # pow_assent_routes()
+    #* OR
+    #! DESACTIVE L'INSCRIPTION
+    pow_assent_authorization_routes()
+  end
+
+  #! DESACTIVE L'INSCRIPTION
+  scope "/", Pow.Phoenix, as: "pow" do
+    pipe_through [:browser, :protected]
+    resources "/registration", RegistrationController, singleton: true, only: [:edit, :update, :delete]
+  end
+
+  scope "/" do
+    pipe_through :skip_csrf_protection
+
+    pow_assent_authorization_post_callback_routes()
+  end
+
+  scope "/", NovyAdmin do
+    pipe_through [:browser, :protected]
+
+    # Add your protected routes here
   end
 
   live_session :default do
