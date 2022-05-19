@@ -21,32 +21,32 @@ defmodule NovyAdmin.ComponentLive.Aside do
       <nav class="nv-nav mt-2">
         <ul>
           <li>
-          <%= live_patch to: Routes.home_index_path(@socket, :index) do %>
+          <%= live_redirect to: Routes.home_index_path(@socket, :index) do %>
             Home
           <% end %>
           </li>
           <li>
-          <%= live_patch to: Routes.page1_index_path(@socket, :index) do %>
+          <%= live_redirect to: Routes.page1_index_path(@socket, :index) do %>
             Page 1
           <% end %>
           </li>
           <li>
-          <%= live_patch to: Routes.page2_index_path(@socket, :index) do %>
+          <%= live_redirect to: Routes.page2_index_path(@socket, :index) do %>
             Page 2
           <% end %>
           </li>
           <li>
-          <%= live_patch to: Routes.page3_index_path(@socket, :index) do %>
+          <%= live_redirect to: Routes.page3_index_path(@socket, :index) do %>
             Page 3
           <% end %>
           </li>
           <li>
-          <%= live_patch to: Routes.page4_index_path(@socket, :index) do %>
+          <%= live_redirect to: Routes.page4_index_path(@socket, :index) do %>
             Page 4
           <% end %>
           </li>
           <li>
-          <%= live_patch to: Routes.page5_index_path(@socket, :index) do %>
+          <%= live_redirect to: Routes.page5_index_path(@socket, :index) do %>
             Page 5
           <% end %>
           </li>

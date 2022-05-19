@@ -30,16 +30,17 @@ defmodule NovyAdmin.Router do
 
   scope "/" do
     pipe_through [:browser]
+    live "/", NovyAdmin.HomeLive.Index, :index
 
-    #* ACTIVE L'INSCRIPTION
+    # * ACTIVE L'INSCRIPTION
     # pow_routes()
-    #* OR
+    # * OR
     #! DESACTIVE L'INSCRIPTION
     pow_session_routes()
 
-    #* ACTIVE L'INSCRIPTION
+    # * ACTIVE L'INSCRIPTION
     # pow_assent_routes()
-    #* OR
+    # * OR
     #! DESACTIVE L'INSCRIPTION
     pow_assent_authorization_routes()
   end
@@ -47,7 +48,10 @@ defmodule NovyAdmin.Router do
   #! DESACTIVE L'INSCRIPTION
   scope "/", Pow.Phoenix, as: "pow" do
     pipe_through [:browser, :protected]
-    resources "/registration", RegistrationController, singleton: true, only: [:edit, :update, :delete]
+
+    resources "/registration", RegistrationController,
+      singleton: true,
+      only: [:edit, :update, :delete]
   end
 
   scope "/" do
@@ -64,9 +68,8 @@ defmodule NovyAdmin.Router do
 
   live_session :default do
     scope "/", NovyAdmin do
-      pipe_through :browser
+      pipe_through [:browser, :protected]
 
-      live "/", HomeLive.Index, :index
       live "/page-1", Page1Live.Index, :index
       live "/page-2", Page2Live.Index, :index
       live "/page-3", Page3Live.Index, :index
