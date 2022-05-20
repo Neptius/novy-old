@@ -7,8 +7,11 @@ defmodule NovyAdmin.ComponentLive.Backdrop do
 
   def render(assigns) do
     ~H"""
-    <div id="backdrop" phx-click={close_nav()} class="backdrop bg-black/25 h-screen fixed w-full lg:hidden">
-
+    <div
+      id="backdrop"
+      phx-click={close_nav()}
+      class="backdrop bg-black/25 h-screen fixed w-full lg:hidden"
+    >
     </div>
     """
   end

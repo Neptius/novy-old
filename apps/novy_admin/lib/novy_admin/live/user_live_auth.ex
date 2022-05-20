@@ -5,7 +5,11 @@ defmodule NovyAdmin.UserLiveAuth do
   alias Pow.Store.CredentialsCache
   alias Pow.Phoenix.Routes
 
-  def on_mount(:default, _params, session, socket) do
+  def on_mount(:default, _params, _session, socket) do
+    {:cont, socket}
+  end
+
+  def on_mount(:user, _params, session, socket) do
     socket = assign_new(socket, :current_user, fn -> get_current_user(socket, session) end)
 
     if socket.assigns.current_user do

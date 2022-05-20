@@ -7,27 +7,28 @@
     </div>
   <% end %>
 
-  <%= label f, :current_password %>
-  <%= password_input f, :current_password %>
-  <%= error_tag f, :current_password %>
+  <%= label(f, :current_password) %>
+  <%= password_input(f, :current_password) %>
+  <%= error_tag(f, :current_password) %>
 
-  <%= label f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-  <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-  <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+  <%= label(f, Pow.Ecto.Schema.user_id_field(@changeset)) %>
+  <%= text_input(f, Pow.Ecto.Schema.user_id_field(@changeset)) %>
+  <%= error_tag(f, Pow.Ecto.Schema.user_id_field(@changeset)) %>
 
-  <%= label f, :password %>
-  <%= password_input f, :password %>
-  <%= error_tag f, :password %>
+  <%= label(f, :password) %>
+  <%= password_input(f, :password) %>
+  <%= error_tag(f, :password) %>
 
-  <%= label f, :password_confirmation %>
-  <%= password_input f, :password_confirmation %>
-  <%= error_tag f, :password_confirmation %>
+  <%= label(f, :password_confirmation) %>
+  <%= password_input(f, :password_confirmation) %>
+  <%= error_tag(f, :password_confirmation) %>
 
   <div>
-    <%= submit "Update" %>
+    <%= submit("Update") %>
   </div>
 <% end %>
 
-<div><%= for link <- PowAssent.Phoenix.ViewHelpers.provider_links(@conn),
-  do: content_tag(:span, link) %>
+<div>
+  <%= for link <- PowAssent.Phoenix.ViewHelpers.provider_links(@conn),
+          do: content_tag(:span, link) %>
 </div>

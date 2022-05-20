@@ -28,53 +28,53 @@ defmodule NovyAdmin.Router do
       error_handler: Pow.Phoenix.PlugErrorHandler
   end
 
-  scope "/" do
-    pipe_through [:browser]
-    live "/", NovyAdmin.HomeLive.Index, :index
+  live_session :default, on_mount: NovyAdmin.UserLiveAuth do
+    scope "/" do
+      pipe_through [:skip_csrf_protection]
 
-    # * ACTIVE L'INSCRIPTION
-    # pow_routes()
-    # * OR
-    #! DESACTIVE L'INSCRIPTION
-    pow_session_routes()
+      pow_assent_authorization_post_callback_routes()
+    end
 
-    # * ACTIVE L'INSCRIPTION
-    # pow_assent_routes()
-    # * OR
-    #! DESACTIVE L'INSCRIPTION
-    pow_assent_authorization_routes()
+    scope "/", NovyAdmin do
+      pipe_through [:browser]
+    end
+
+    scope "/" do
+      pipe_through [:browser]
+
+      # * ACTIVE L'INSCRIPTION
+      # pow_routes()
+      # * OR
+      #! DESACTIVE L'INSCRIPTION
+      pow_session_routes()
+
+      # * ACTIVE L'INSCRIPTION
+      # pow_assent_routes()
+      # * OR
+      #! DESACTIVE L'INSCRIPTION
+      pow_assent_authorization_routes()
+    end
   end
 
-  #! DESACTIVE L'INSCRIPTION
-  scope "/", Pow.Phoenix, as: "pow" do
-    pipe_through [:browser, :protected]
-
-    resources "/registration", RegistrationController,
-      singleton: true,
-      only: [:edit, :update, :delete]
-  end
-
-  scope "/" do
-    pipe_through :skip_csrf_protection
-
-    pow_assent_authorization_post_callback_routes()
-  end
-
-  scope "/", NovyAdmin do
-    pipe_through [:browser, :protected]
-
-    # Add your protected routes here
-  end
-
-  live_session :default do
+  live_session :authenticated, on_mount: {NovyAdmin.UserLiveAuth, :user} do
     scope "/", NovyAdmin do
       pipe_through [:browser, :protected]
 
+      live "/", HomeLive.Index, :index
       live "/page-1", Page1Live.Index, :index
       live "/page-2", Page2Live.Index, :index
       live "/page-3", Page3Live.Index, :index
       live "/page-4", Page4Live.Index, :index
       live "/page-5", Page5Live.Index, :index
+    end
+
+    #! DESACTIVE L'INSCRIPTION
+    scope "/", Pow.Phoenix, as: "pow" do
+      pipe_through [:browser, :protected]
+
+      resources "/registration", RegistrationController,
+        singleton: true,
+        only: [:edit, :update, :delete]
     end
   end
 

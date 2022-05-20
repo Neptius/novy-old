@@ -7,12 +7,11 @@
     </div>
   <% end %>
 
-  <%= label f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-  <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-  <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+  <%= label(f, Pow.Ecto.Schema.user_id_field(@changeset)) %>
+  <%= text_input(f, Pow.Ecto.Schema.user_id_field(@changeset)) %>
+  <%= error_tag(f, Pow.Ecto.Schema.user_id_field(@changeset)) %>
 
   <div>
-    <%= submit "Submit" %>
+    <%= submit("Submit") %>
   </div>
 <% end %>
-

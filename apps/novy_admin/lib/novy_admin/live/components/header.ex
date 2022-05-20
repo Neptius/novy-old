@@ -10,9 +10,12 @@ defmodule NovyAdmin.ComponentLive.Header do
     <header id="header" class="header bg-slate-600 flex items-center">
       <div class="flex justify-between mx-7">
         <div class="nv-header-left">
-
           <button phx-click={toggle_expanded()}>
-            <FontAwesome.LiveView.icon name="bars" type="solid" class="h-6 w-6 text-white fill-current" />
+            <FontAwesome.LiveView.icon
+              name="bars"
+              type="solid"
+              class="h-6 w-6 text-white fill-current"
+            />
           </button>
         </div>
         <div class="nv-header-middle"></div>

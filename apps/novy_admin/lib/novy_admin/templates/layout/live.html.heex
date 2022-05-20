@@ -1,11 +1,17 @@
 <div id="wrapper" class="wrapper grid relative h-screen w-screen overflow-none bg-slate-700">
-<!--
+  <!--
   <p class="alert alert-info" role="alert" phx-click="lv:clear-flash" phx-value-key="info">
-    <%= live_flash(@flash, :info) %>
+    <%= live_flash(
+  @flash,
+  :info
+) %>
   </p>
 
   <p class="alert alert-danger" role="alert" phx-click="lv:clear-flash" phx-value-key="error">
-    <%= live_flash(@flash, :error) %>
+    <%= live_flash(
+  @flash,
+  :error
+) %>
   </p>
 -->
   <.live_component module={NovyAdmin.ComponentLive.Header} id="header" />

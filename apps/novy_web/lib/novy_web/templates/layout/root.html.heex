@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%= csrf_meta_tag() %>
-    <%= live_title_tag assigns[:page_title] || "Novy", suffix: " · Phoenix Framework" %>
-    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
-    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+    <%= live_title_tag(assigns[:page_title] || "Novy", suffix: " · Phoenix Framework") %>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")} />
+    <script
+      defer
+      phx-track-static
+      type="text/javascript"
+      src={Routes.static_path(@conn, "/assets/app.js")}
+    >
+    </script>
   </head>
   <body>
-  <%= if Pow.Plug.current_user(@conn) do %>
-  <span><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></span>
-<% else %>
-  <span><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></span>
-  <span><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></span>
-<% end %>
+    <%= if Pow.Plug.current_user(@conn) do %>
+      <span>
+        <%= link("Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete) %>
+      </span>
+    <% else %>
+      <span><%= link("Register", to: Routes.pow_registration_path(@conn, :new)) %></span>
+      <span><%= link("Sign in", to: Routes.pow_session_path(@conn, :new)) %></span>
+    <% end %>
     <%= @inner_content %>
   </body>
 </html>
