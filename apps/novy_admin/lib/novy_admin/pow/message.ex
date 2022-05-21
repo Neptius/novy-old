@@ -19,12 +19,12 @@ defmodule NovyAdmin.Pow.Messages do
   def pow_assent_login_with_provider(conn) do
     provider = Phoenix.Naming.humanize(conn.params["provider"])
 
-    gettext("Connection via %{provider}", provider: provider)
+    gettext("Connexion via %{provider}", provider: provider)
   end
 
   def pow_assent_remove_provider_authentication(conn) do
     provider = Phoenix.Naming.humanize(conn.params["provider"])
 
-    gettext("Déconnection de %{provider}", provider: provider)
+    gettext("Déconnexion de %{provider}", provider: provider)
   end
 end
