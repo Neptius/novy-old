@@ -21,7 +21,8 @@ config :novy_web, :pow,
 config :novy_admin, :pow,
   user: Novy.Users.User,
   repo: Novy.Repo,
-  web_module: NovyAdmin
+  web_module: NovyAdmin,
+  messages_backend: NovyAdmin.Pow.Messages
 
 # Configures the mailer
 #

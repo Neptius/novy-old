@@ -4,37 +4,12 @@
     <div class="w-full max-w-sm m-auto bg-neutral-900 rounded-lg shadow-lg p-10">
       <h1 class="text-center text-2xl mb-5">Connectez-vous</h1>
 
-      <%= link to: "/",
-        class:
-          "block bg-discord bg-discord-hover tracking-wide w-full py-2 text-lg rounded-lg shadow-lg transition duration-100 ease-in-out flex justify-center items-center" 
-      do %>
-        <FontAwesome.LiveView.icon
-          name="discord"
-          type="brands"
-          class="h-6 w-6 text-white fill-current"
-        />
-        <span class="ml-1">Connection via Discord</span>
-      <% end %>
+      <%=  NovyAdmin.PowAssent.ViewHelpers.authorization_link(@conn, :discord) %>
 
-      <%= PowAssent.Phoenix.ViewHelpers.authorization_link(@conn, :discord) %>
-
-      <br />
-
-      <%= for link <- PowAssent.Phoenix.ViewHelpers.provider_links(@conn) do %>
-        <%= content_tag :button, class: "bg-discord bg-discord-hover tracking-wide w-full py-2 text-lg rounded-lg shadow-lg transition duration-100 ease-in-out flex justify-center items-center" do %>
-          <FontAwesome.LiveView.icon
-            name="discord"
-            type="brands"
-            class="h-6 w-6 text-white fill-current"
-          />
-          <%= link %>
-        <% end %>
-      <% end %>
-
-      <div class="flex flex-row items-center w-full">
-        <div class="flex-auto bg-gray-100 h-px mr-2"></div>
+      <div class="flex flex-row items-center w-full my-4">
+        <div class="flex-auto bg-gray-100 h-px mr-3"></div>
         <div class="flex-none"><span>OR</span></div>
-        <div class="flex-auto bg-gray-100 h-px ml-2"></div>
+        <div class="flex-auto bg-gray-100 h-px ml-3"></div>
       </div>
 
       <%= form_for @changeset, @action, [as: :user], fn f -> %>
