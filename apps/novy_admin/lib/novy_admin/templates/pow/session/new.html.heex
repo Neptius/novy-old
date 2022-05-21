@@ -1,10 +1,10 @@
 <div class="flex">
-  <div class="flex-1 h-screen bg-neutral-900 hidden lg:block "></div>
-  <div class="flex-1 h-screen login-split-bg text-white flex items-center">
-    <div class="w-full max-w-sm m-auto bg-neutral-900 rounded-lg shadow-lg p-10">
+  <div class="flex-1 h-screen login-split-bg  hidden lg:block "></div>
+  <div class="flex-1 h-screen  bg-neutral-900 text-white flex items-center">
+    <div class="w-full max-w-sm m-auto bg-neutral-800 rounded-lg shadow-lg p-10">
       <h1 class="text-center text-2xl mb-5">Connectez-vous</h1>
 
-      <%=  NovyAdmin.PowAssent.ViewHelpers.authorization_link(@conn, :discord) %>
+      <%= NovyAdmin.PowAssent.ViewHelpers.authorization_link(@conn, :discord) %>
 
       <div class="flex flex-row items-center w-full my-4">
         <div class="flex-auto bg-gray-100 h-px mr-3"></div>

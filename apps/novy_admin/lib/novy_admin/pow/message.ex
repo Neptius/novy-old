@@ -1,5 +1,6 @@
 defmodule NovyAdmin.Pow.Messages do
   use Pow.Phoenix.Messages
+
   use Pow.Extension.Phoenix.Messages,
     extensions: [PowAssent]
 

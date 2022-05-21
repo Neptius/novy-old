@@ -22,11 +22,13 @@
     />
   </head>
   <body>
-  <%= if Pow.Plug.current_user(@conn) do %>
-  <span><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></span>
-  <% else %>
-    <span><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></span>
-  <% end %>
+    <%= if Pow.Plug.current_user(@conn) do %>
+      <span>
+        <%= link("Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete) %>
+      </span>
+    <% else %>
+      <span><%= link("Sign in", to: Routes.pow_session_path(@conn, :new)) %></span>
+    <% end %>
     <%= @inner_content %>
   </body>
 </html>
