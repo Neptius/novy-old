@@ -8,7 +8,8 @@ defmodule NovyAdmin.Pow.Messages do
 
   import NovyAdmin.Gettext
 
-  def user_not_authenticated(_conn), do: gettext("Vous devez être connecté afin de consulter cette page.")
+  def user_not_authenticated(_conn),
+    do: gettext("Vous devez être connecté afin de consulter cette page.")
 
   # The provided login details did not work. Please verify your credentials, and try again.
   def invalid_credentials(_conn), do: gettext("REKT.")

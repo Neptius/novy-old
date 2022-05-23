@@ -28,6 +28,11 @@ defmodule NovyAdmin.Router do
       error_handler: Pow.Phoenix.PlugErrorHandler
   end
 
+  pipeline :not_authenticated do
+    plug Pow.Plug.RequireNotAuthenticated,
+      error_handler: MyAppWeb.AuthErrorHandler
+  end
+
   live_session :default, on_mount: NovyAdmin.UserLiveAuth do
     scope "/" do
       pipe_through [:skip_csrf_protection]

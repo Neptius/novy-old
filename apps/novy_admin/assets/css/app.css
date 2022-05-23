@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 .btn-discord-login {
-  @apply bg-discord bg-discord-hover tracking-wide w-full py-2 text-lg shadow-lg transition duration-100 ease-in-out flex justify-center items-center;
+  @apply bg-discord bg-discord-hover tracking-wide w-full py-2 shadow-lg transition duration-100 ease-in-out flex justify-center items-center;
+}
+
+.btn-discord-login span {
+  @apply text-base font-medium;
 }
 
 .btn-discord-login svg {
