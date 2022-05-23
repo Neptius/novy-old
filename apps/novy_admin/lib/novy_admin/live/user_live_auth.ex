@@ -1,5 +1,6 @@
 defmodule NovyAdmin.UserLiveAuth do
   @moduledoc false
+
   import Phoenix.LiveView
 
   alias Pow.Store.CredentialsCache
@@ -31,7 +32,7 @@ defmodule NovyAdmin.UserLiveAuth do
            CredentialsCache.get([backend: Pow.Store.Backend.EtsCache], token) do
       user
     else
-      _any -> nil
+      _ -> nil
     end
   end
 

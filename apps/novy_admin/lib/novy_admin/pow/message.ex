@@ -1,4 +1,6 @@
 defmodule NovyAdmin.Pow.Messages do
+  @moduledoc false
+
   use Pow.Phoenix.Messages
 
   use Pow.Extension.Phoenix.Messages,
@@ -6,8 +8,9 @@ defmodule NovyAdmin.Pow.Messages do
 
   import NovyAdmin.Gettext
 
-  def user_not_authenticated(_conn), do: gettext("Vous devez être connecté pour voir cette page.")
+  def user_not_authenticated(_conn), do: gettext("Vous devez être connecté afin de consulter cette page.")
 
+  # The provided login details did not work. Please verify your credentials, and try again.
   def invalid_credentials(_conn), do: gettext("REKT.")
 
   def pow_assent_signed_in(conn) do

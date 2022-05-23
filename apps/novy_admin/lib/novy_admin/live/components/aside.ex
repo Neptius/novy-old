@@ -20,6 +20,13 @@ defmodule NovyAdmin.ComponentLive.Aside do
       <nav class="nv-nav mt-2">
         <ul>
           <li>
+            <%= if @current_user do %>
+              <%= link("Sign out", to: Routes.pow_session_path(@socket, :delete), method: :delete) %>
+            <% else %>
+              <%= link("Sign in", to: Routes.pow_session_path(@socket, :new)) %>
+            <% end %>
+          </li>
+          <li>
             <%= live_redirect to: Routes.home_index_path(@socket, :index) do %>
               Home
             <% end %>
@@ -56,6 +63,7 @@ defmodule NovyAdmin.ComponentLive.Aside do
   end
 
   def mount(socket) do
+    IO.inspect(socket)
     {:ok, socket}
   end
 end
