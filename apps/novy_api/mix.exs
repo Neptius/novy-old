@@ -43,7 +43,11 @@ defmodule NovyApi.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:novy, in_umbrella: true}
+      {:novy, in_umbrella: true},
+      {:pow, "~> 1.0.27"},
+      {:pow_assent, "~> 0.4.13"},
+      {:certifi, "~> 2.4"},
+      {:ssl_verify_fun, "~> 1.1"}
     ]
   end
 

@@ -24,6 +24,10 @@ config :novy_admin, :pow,
   web_module: NovyAdmin,
   messages_backend: NovyAdmin.Pow.Messages
 
+config :novy_api, :pow,
+  user: Novy.Users.User,
+  repo: Novy.Repo
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
