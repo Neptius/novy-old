@@ -1,5 +1,11 @@
 <main>
-  <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+  <div class="fixed bg-teal-600 max-w-lg w-full top-5">
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+  </div>
+  <%= if get_flash(@conn, :error) do %>
+    <div class="fixed bg-teal-500 py-3 px-5 text-white md:mx-auto md:max-w-lg w-full md:top-5 top-0">
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    </div>
+  <% end %>
   <%= @inner_content %>
 </main>

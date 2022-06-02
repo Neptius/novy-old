@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .btn-discord-login {
-  @apply bg-discord bg-discord-hover tracking-wide w-full py-2 shadow-lg transition duration-100 ease-in-out flex justify-center items-center;
+  @apply btn-novy bg-discord bg-discord-hover tracking-wide w-full py-2 shadow-lg transition duration-100 ease-in-out flex justify-center items-center;
 }
 
 .btn-discord-login span {
@@ -16,6 +16,22 @@
 
 body {
   font-family: "Chakra Petch", sans-serif;
+}
+
+.btn-novy {
+  --notchSize: 7px;
+  
+  clip-path: 
+    polygon(
+      0% var(--notchSize), 
+      var(--notchSize) 0%, 
+      calc(100% - var(--notchSize)) 0%, 
+      100% var(--notchSize), 
+      100% calc(100% - var(--notchSize)), 
+      calc(100% - var(--notchSize)) 100%, 
+      var(--notchSize) 100%, 
+      0% calc(100% - var(--notchSize))
+    );
 }
 
 /* -------------------- */
