@@ -36,7 +36,7 @@ defmodule Novy.Umbrella.MixProject do
   defp deps do
     [
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:phoenix_live_view, "~> 0.17.9"}
+      {:phoenix_live_view, "~> 0.17.10"}
     ]
   end
 
